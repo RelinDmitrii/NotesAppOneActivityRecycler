@@ -19,13 +19,10 @@ public class NotesDetailFragment extends Fragment {
     public TextView dataNotesDetail;
     public EditText descriptionNotesDetail;
 
-    public static NotesDetailFragment newInstance(int index, String title, String description, String data) {
+    public static NotesDetailFragment newInstance(int index) {
         NotesDetailFragment fragment = new NotesDetailFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_INDEX, index);
-        bundle.putString("title", title);
-        bundle.putString("description", description);
-        bundle.putString("data", data);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -52,9 +49,9 @@ public class NotesDetailFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (getArguments() != null) {
-            String title = getArguments().getString("title");
-            String description = getArguments().getString("description");
-            String data = getArguments().getString("data");
+            String title = ((MainActivity) getActivity()).notes.get(getArguments().getInt(ARG_INDEX)).title;
+            String description = ((MainActivity) getActivity()).notes.get(getArguments().getInt(ARG_INDEX)).description;
+            String data = ((MainActivity) getActivity()).notes.get(getArguments().getInt(ARG_INDEX)).data;
             titleNotesDetail.setText(title);
             dataNotesDetail.setText(data);
             descriptionNotesDetail.setText(description);
