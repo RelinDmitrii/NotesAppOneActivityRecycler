@@ -18,10 +18,17 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
+
+
+    ArrayList<Note> notes = new ArrayList<>(Arrays.asList(new Note("Парикмахер", "Подстричься", "16.02.02"),
+            new Note("Рабочая встреча", "Встреча с представителем банка", "18.02.02"), new Note("Прогулка", "Прогулка на велосипедах", "20.02.02")));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
